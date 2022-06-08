@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
@@ -27,6 +28,7 @@ public class JwtFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         String jwt = resolveToken(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
 
@@ -36,7 +38,8 @@ public class JwtFilter extends GenericFilterBean {
             logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다. url: {}", authentication.getName(), requestURI);
         } else {
             logger.debug("유효한 JWT 토큰이 없습니다. url: {}", requestURI);
-            throw new ServletException("유효한 JWT 토큰이 없습니다.");
+            httpServletResponse.sendRedirect("/login");
+//            throw new ServletException("유효한 JWT 토큰이 없습니다.");
         }
 
         chain.doFilter(request, response);

@@ -1,0 +1,32 @@
+.login_box {
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.login_box span {
+    display: block;
+    color: #aaa;
+}
+
+.login_box input {
+    padding: 1em;
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid #b7CEEB;
+    border-radius: 8px;
+}
+
+.red_button {
+    font-size: 16px;
+    padding: 1em 0 0.7em 0 !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.red_line-button {
+    font-size: 16px;
+    padding: 1em 0 0.7em 0 !important;
+    margin: 20px 0 0 0 !important;
+}

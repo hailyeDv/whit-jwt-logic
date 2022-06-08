@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <title>With jwt logic</title>
+
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+<div th:object="${user}">
+  <input type="text" th:field="*{userName}">
+  <input type="text" th:field="*{password}">
+  <div>
+    <li th:each="gender : ${genders}">
+      <input type="radio" th:id="${gender.name()}" th:value="${gender.description}">
+    </li>
+  </div>
+</div>
+</body>
+</html>

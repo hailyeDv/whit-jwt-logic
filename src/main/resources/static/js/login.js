@@ -1,0 +1,5 @@
+var obj = {
+    login: function () {
+
+    },
+}
