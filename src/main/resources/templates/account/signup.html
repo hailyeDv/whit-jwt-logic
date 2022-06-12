@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
   <title>With jwt logic</title>
 
-  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <script type="text/javascript" th:src="@{/js/account/signup.js}"></script>
 </head>
 <body>
 <div th:object="${user}">
+  <span>아이디</span>
   <input type="text" th:field="*{userName}">
-  <input type="text" th:field="*{password}">
+  <span>비밀번호</span>
+  <input type="password" th:field="*{password}">
+
   <div>
+    <span>성별</span>
     <li th:each="gender : ${genders}">
-      <input type="radio" th:id="${gender.name()}" th:value="${gender.description}">
+      <input type="radio" th:id="${gender.name()}" name="gender" th:value="${gender.description}">
+      <label th:for="${gender.name()}" th:text="${gender.description}"></label>
     </li>
   </div>
+
+  <input type="button" onclick="obj.signup();" th:value="#{button.signup}">
 </div>
 </body>
 </html>

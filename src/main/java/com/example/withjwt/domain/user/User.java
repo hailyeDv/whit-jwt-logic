@@ -9,7 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -40,5 +41,24 @@ public class User extends BaseEntity {
     @JoinTable(name = "user_authority",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private List<Authority> authority;
+    private Set<Authority> authority;
+
+    /** ======================== 연관 ======================== */
+
+    /** ======================== 생성 ======================== */
+    public static User of(User saveData, Authority authority) {
+        User user = new User();
+        user.userName = saveData.getUserName();
+        user.password = saveData.getPassword();
+        user.gender = saveData.getGender();
+        user.authority = Collections.singleton(authority);
+
+        user.activated = Used.Y;
+
+        return user;
+    }
+    /** ======================== 비즈니스 ======================== */
+
+    /** ======================== 조회 ======================== */
+
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "authoritys")
+@Table(name = "authority")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Authority extends BaseEntity {
 
@@ -20,4 +20,11 @@ public class Authority extends BaseEntity {
 
     @Column
     private String authorityName;
+
+    public static Authority of(Long id) {
+        Authority authority = new Authority();
+        authority.id = id;
+
+        return authority;
+    }
 }
